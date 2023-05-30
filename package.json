@@ -11,6 +11,9 @@
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
+    "start:dev:db": "sh ./src/database/scripts/start-db.sh && nest start --watch",
+    "start:dev:db:seed": "sh ./src/database/scripts/start-db.sh && nest start --watch",
+    "stop:dev:db:destroy": "sh ./src/database/scripts/stop-db.sh",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -24,8 +27,11 @@
     "@nestjs/core": "^9.0.5",
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/swagger": "^6.3.0",
+    "@nestjs/typeorm": "^9.0.1",
+    "pg": "^8.11.0",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "^7.5.5"
+    "rxjs": "^7.5.5",
+    "typeorm": "^0.3.16"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.3.0",

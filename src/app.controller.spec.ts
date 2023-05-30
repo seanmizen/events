@@ -2,7 +2,6 @@ import { Test, TestingModule } from '@nestjs/testing'
 import { ConfigService } from '@nestjs/config'
 
 import { AppController } from './app.controller'
-import { AppService } from './app.service'
 
 describe('AppController', () => {
   let appController: AppController
@@ -11,7 +10,7 @@ describe('AppController', () => {
   beforeAll(async () => {
     const app: TestingModule = await Test.createTestingModule({
       controllers: [AppController],
-      providers: [AppService, ConfigService],
+      providers: [ConfigService],
     }).compile()
 
     appController = app.get<AppController>(AppController)
@@ -23,8 +22,8 @@ describe('AppController', () => {
       expect(appController.getHello()).toBe('Hello World!')
     })
 
-    it('should return ping pong', () => {
-      expect(appController.ping()).toEqual({ ping: 'pong' })
+    it('should return pong', () => {
+      expect(appController.ping()).toEqual('pong')
     })
 
     it('should return version number', () => {
