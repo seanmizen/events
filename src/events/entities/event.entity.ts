@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 @Entity({ name: 'events' })
 export class Event {
   @PrimaryGeneratedColumn({ type: 'bigint' })
-  id: number
+  id: string
 
   @Column({ unique: true, nullable: false, default: () => `'${uuidv4()}'` })
   uuid: string
@@ -15,10 +15,10 @@ export class Event {
   @Column({ length: 255 })
   description: string
 
-  @Column({ type: 'date' })
+  @Column({ type: 'timestamp' })
   startDate: Date
 
-  @Column({ type: 'date', nullable: true })
+  @Column({ type: 'timestamp', nullable: true })
   endDate?: Date
 
   @Column({ default: false })

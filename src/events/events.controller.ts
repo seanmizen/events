@@ -18,14 +18,19 @@ export class EventsController {
     return this.eventsService.findAll()
   }
 
+  @Get('ids-and-names')
+  findAllIdsAndNames() {
+    return this.eventsService.findAllIdsAndNames()
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.eventsService.findOne(+id)
+    return this.eventsService.findOne(id)
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateEventDto: UpdateEventDto) {
-    return this.eventsService.update(+id, updateEventDto)
+    return this.eventsService.update(id, updateEventDto)
   }
 
   @Delete(':id')
